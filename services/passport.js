@@ -17,7 +17,6 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(
-  //google strategy has internal identifier as 'google'
   new GoogleStrategy(
     {
       clientID: keys.googleClientID,

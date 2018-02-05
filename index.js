@@ -29,6 +29,7 @@ app.get('/', (req, res) =>{
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   //Express will serve up production assets like main.js or main.css

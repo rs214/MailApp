@@ -6,7 +6,7 @@ class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
     super();
 
-    this.sendGridAPI = sendgrid(keys.sendGridkey);
+    this.sendGridAPI = sendgrid(keys.sendGridKey);
     this.from_email = new helper.Email('no-reply@mailapp.com');
     this.subject = subject;
     this.body = new helper.Content('text/html', content);
@@ -24,8 +24,8 @@ class Mailer extends helper.Mail {
   }
 
   addClickTracking() {
-    const trackignSettings = new helper.TrackingSettings();
-    const clickTracking = new hlper.ClickTracking(true, true);
+    const trackingSettings = new helper.TrackingSettings();
+    const clickTracking = new helper.ClickTracking(true, true);
 
     trackingSettings.setClickTracking(clickTracking);
     this.addTrackingSettings(trackingSettings);
@@ -41,12 +41,12 @@ class Mailer extends helper.Mail {
 
   async send() {
     const request = this.sendGridAPI.emptyRequest({
-      method: POST,
+      method: 'POST',
       path: '/v3/mail/send',
       body: this.toJSON()
     });
 
-    const response = this.sendGridAPI.API(request)
+    const response = await this.sendGridAPI.API(request)
     return response;
   }
 }

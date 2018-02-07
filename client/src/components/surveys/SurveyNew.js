@@ -6,7 +6,7 @@ class SurveyNew extends Component {
   render() {
     return (
       <div>
-        SurveyNew
+        <h3>Create a new Survey</h3>
         <SurveyForm />
       </div>
     );
